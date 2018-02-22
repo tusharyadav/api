@@ -71,8 +71,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'api.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+#Database
+#https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -80,6 +80,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 
 # Internationalization
@@ -100,3 +101,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+REST_FRAMEWORK = {
+    'PAGINATE_BY': 5,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        #'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+
+    ),
+   'DEFAULT_FILTER_BACKENDS':('django_filters.rest_framework.DjangoFilterBackend',)
+}
